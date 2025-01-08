@@ -1,0 +1,29 @@
+2024-10-20 04:02:25,758 - ERROR - Email already registered: tes32t@gmail.com
+2024-10-20 04:02:47,527 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/rekru/PycharmProjects/kabanForum/services/auth_service/.venv/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-10-20 04:02:47,528 - DEBUG - detected 'bcrypt' backend, version '<unknown>'
+2024-10-20 04:02:47,529 - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2024-10-20 04:05:36,462 - ERROR - Email already registered: tes23t@gmail.com
+2024-10-20 04:05:49,262 - ERROR - Email already registered: tes2s3t@gmail.com
+2024-10-20 04:07:38,567 - ERROR - Email already registered: tes2s3t@gmail.com
+2024-10-20 04:07:43,670 - INFO - Successfully registered user: tes2ss3t@gmail.com
+2024-10-20 04:07:43,670 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/rekru/PycharmProjects/kabanForum/services/auth_service/.venv/lib/python3.13/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2024-10-20 04:07:43,671 - DEBUG - detected 'bcrypt' backend, version '<unknown>'
+2024-10-20 04:07:43,671 - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2024-10-20 04:12:11,001 - ERROR - Email already registered: tes2ss3t@gmail.com
+2024-10-20 04:12:18,865 - INFO - Successfully registered user: tess2ss3t@gmail.com
+2024-10-20 04:12:18,867 - DEBUG - detected 'bcrypt' backend, version '4.0.1'
+2024-10-20 04:12:18,867 - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2024-10-20 04:17:09,859 - ERROR - Email already registered: tess2ss3t@gmail.com
+2024-10-20 04:17:14,692 - INFO - Successfully registered user: tess2sds3t@gmail.com
+2024-10-20 04:17:14,693 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-10-20 04:17:26,581 - INFO - Successfully registered user: tess2sds32t@gmail.com

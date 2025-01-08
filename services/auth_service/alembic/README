@@ -1,0 +1,9 @@
+Generic single-database configuration.
+
+HOW TO RUN THIS SHIT IF YOU MADE CHANGES IN THE DATABASE WITH THE SQLALCHEMY
+
+alembic revision --autogenerate -m "your message"
+
+alembic upgrade head
+
+should do the trick

@@ -1,0 +1,19 @@
+2024-10-20 06:46:45,544 - INFO - Successfully registered user: inittest@gmail.com
+2024-10-20 06:46:45,545 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-11-05 11:49:47,294 - INFO - Successfully registered user: shalom@gmail.com
+2024-11-05 11:49:47,296 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-12-01 04:21:24,615 - INFO - Successfully registered user: sosomuzika@gmail.com
+2024-12-01 04:23:23,163 - INFO - Successfully registered user: sosomuzika@gmail.com
+2024-12-01 04:23:23,163 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-12-01 04:23:48,960 - INFO - Successfully registered user: sosomuzika2@gmail.com
+2024-12-03 00:32:41,735 - INFO - Successfully registered user: rekrut.fedosenko@gmail.com
+2024-12-03 00:32:41,736 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-12-03 00:53:44,983 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2024-12-05 11:07:10,144 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-05 00:27:34,426 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-05 00:53:48,571 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-07 05:43:14,107 - INFO - Successfully registered user: kelvindoubleoh@gmail.com
+2025-01-07 05:43:14,109 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-07 05:49:25,367 - ERROR - Email already registered: kelvindoubleoh@gmail.com
+2025-01-07 05:54:35,136 - ERROR - Email already registered: kelvindoubleoh@gmail.com
+2025-01-07 05:56:49,337 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
