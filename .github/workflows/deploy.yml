@@ -14,13 +14,22 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to server
+      - name: Test SSH Connection
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          ssh -vvv -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST 'echo "Connection test"'
+
+      - name: Deploy
         env:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
         run: |
           ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST << 'EOF'
-            cd var/www/kabanforum
+            set -e
+            echo "Starting deployment..."
+            cd /var/www/kabanforum
             git pull
             docker-compose up -d --build
           EOF
