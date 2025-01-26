@@ -20,15 +20,13 @@ jobs:
           SERVER_USER: ${{ secrets.SERVER_USER }}
         run: |
           ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST << 'EOF'
-            set -x  # Enable debug output
-            echo "Current directory: $(pwd)"
-            echo "Testing Git..."
-            git --version
-            cd /var/www/kabanforum/kaban || exit 1
-            echo "In project directory: $(pwd)"
-            git status
-            echo "Pulling changes..."
+            cd /var/www/kabanforum/kaban
+            git reset --hard
             git pull
-            echo "Starting containers..."
-            docker-compose up -d --build
+            # Force recreation of containers
+            docker-compose down
+            docker-compose rm -f
+            docker-compose pull
+            docker system prune -f
+            docker-compose up -d --build --force-recreate
           EOF
