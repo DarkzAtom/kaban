@@ -24,7 +24,7 @@ jobs:
             echo "Current directory: $(pwd)"
             echo "Testing Git..."
             git --version
-            cd /var/www/kabanforum || exit 1
+            cd /var/www/kabanforum/kaban || exit 1
             echo "In project directory: $(pwd)"
             git status
             echo "Pulling changes..."
