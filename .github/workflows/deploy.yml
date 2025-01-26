@@ -14,22 +14,21 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Test SSH Connection
-        env:
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-        run: |
-          ssh -vvv -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST 'echo "Connection test"'
-
-      - name: Deploy
+      - name: Debug and Deploy
         env:
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
         run: |
           ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST << 'EOF'
-            set -e
-            echo "Starting deployment..."
-            cd /var/www/kabanforum
+            set -x  # Enable debug output
+            echo "Current directory: $(pwd)"
+            echo "Testing Git..."
+            git --version
+            cd /var/www/kabanforum || exit 1
+            echo "In project directory: $(pwd)"
+            git status
+            echo "Pulling changes..."
             git pull
+            echo "Starting containers..."
             docker-compose up -d --build
           EOF
