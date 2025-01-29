@@ -17,3 +17,9 @@
 2025-01-07 05:49:25,367 - ERROR - Email already registered: kelvindoubleoh@gmail.com
 2025-01-07 05:54:35,136 - ERROR - Email already registered: kelvindoubleoh@gmail.com
 2025-01-07 05:56:49,337 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-29 11:23:04,552 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-29 11:25:23,540 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-01-29 11:26:43,692 - ERROR - User not found, recovery mail won't be sent
+2025-01-29 11:27:04,695 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-01-29 12:08:13,837 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-01-29 12:10:15,656 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes

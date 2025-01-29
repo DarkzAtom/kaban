@@ -70,6 +70,98 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(database.g
     return users
 
 
+# password-recovery secrets, variables, etc. i will move it later into the .envs, im just lazy for now to do this. thanks
+JWT_SECRET_KEY = 'ef0691a0e48bab988adb9faf3fda0b93501e0a7fd363c3fadc7b47b62d1c159d'
+JWT_ALGORITHM = 'HS256'
+
+import jwt
+from datetime import datetime, timedelta, timezone
+from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+
+
+email_conf = ConnectionConfig(
+    MAIL_USERNAME = "claj.automail@gmail.com",
+    MAIL_PASSWORD = "lyay kmcb udwz vrqm",
+    MAIL_FROM = "claj.automail@gmail.com",
+    MAIL_PORT = 587,
+    MAIL_SERVER = "smtp.gmail.com",
+    MAIL_STARTTLS = True,
+    MAIL_SSL_TLS = False,
+    USE_CREDENTIALS = True
+)
+
+
+@app.post('/auth/password-recovery')
+async def password_recovery(user_email: schemas.UserPasswordRecovery, db: Session = Depends(database.get_db)):
+    db_user = crud.get_user_by_email(db, email=user_email.email)
+    if not db_user:
+        logger.error("User not found, recovery mail won't be sent")
+        raise HTTPException(status_code=400, detail="User not found")
+    token = jwt.encode(
+        {
+            'email': user_email.email,
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=30),
+        },
+        JWT_SECRET_KEY,
+        JWT_ALGORITHM
+    )
+
+    # Create the reset link
+    reset_link = f"http://claj.pro/reset-password?token={token}"
+
+    # Prepare email message
+    message = MessageSchema(
+        subject="Password Reset Request",
+        recipients=[user_email.email],
+        body=f"""
+            <html>
+                <body>
+                    <h2>Password Reset Request</h2>
+                    <p>Click the link below to reset your password:</p>
+                    <p><a href="{reset_link}">Reset Password</a></p>
+                    <p>This link will expire in 30 minutes.</p>
+                    <p>If you didn't request this, please ignore this email.</p>
+                </body>
+            </html>
+            """,
+        subtype="html"
+    )
+
+    # Send email
+    fm = FastMail(email_conf)
+    try:
+        await fm.send_message(message)
+        logger.info(f"Password reset email sent to {user_email.email}")
+    except Exception as e:
+        logger.error(f"Failed to send email: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to send reset email")
+
+    return {"message": "Password reset instructions sent to your email"}
+
+@app.post('/auth/postprocess-pswd-recovery')
+async def reset_password(token: str, new_password: str, db: Session = Depends(database.get_db)):
+    try:
+
+        # verifying token mafaka
+
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        email: str = payload.get('email')
+
+        if not email:
+            raise HTTPException(status_code=400, detail="Invalid token")
+
+
+        updated_user = crud.update_user_password(db, email, new_password)
+        if not updated_user:
+            raise HTTPException(status_code=400, detail="User not found")
+
+
+        return {"message": f"Password reset successfully for {email}"}
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=400, detail="Reset link has expired")
+    except jwt.PyJWTError:
+        raise HTTPException(status_code=400, detail="Invalid reset token")
+
 
 @app.get("/auth/health")
 async def health_check():

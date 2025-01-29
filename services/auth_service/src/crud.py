@@ -33,3 +33,12 @@ def login_user(db: Session, user: schemas.UserLogin):
         return None
 
     return db_user
+
+# In crud.py, add this function:
+def update_user_password(db: Session, email: str, new_password: str):
+    user = get_user_by_email(db, email=email)
+    if user:
+        user.hashed_password = pwd_context.hash(new_password)
+        db.commit()
+        return user
+    return None

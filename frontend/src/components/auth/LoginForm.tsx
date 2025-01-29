@@ -46,7 +46,46 @@ const LoginForm: React.FC = () => {
           content: "Password reset link has been sent to your email! If we found it in our database, khm... :)",
         },
       ]); // **Replace with actual forget-password logic**
+
+      const email = formData.get('email')?.toString().trim()
+
+      try {
+        const response = authApi.post('auth/password-recovery', {
+          email: email
+        })
+      } catch (error: any) {
+        if (error.response) {
+          switch (error.response.status) {
+            case 400:
+              console.log('Email is already taken!', error);
+              alert('Account already exists with a such email! Please try another one, or recover your account via "Forgot password"');
+              break;
+            case 401:
+              console.log('Wrong password or email', error);
+              alert('Wrong password or email');
+              break;
+            case 404:
+              console.log('Endpoint not found');
+              alert("Endpoint not found");
+              break;
+            case 500:
+              console.log('Server error please try again later');
+              alert("Server error, please try again later");
+              break;
+            default:
+              console.log(`Unknown error: ${error.response.detail}`);
+              alert("Unknown error, please try again later");
+              break;
+          }
+        } else if (error.request) {
+          alert('The server is unavailable, please check your internet connection or try again later');
+        } else {
+          alert('Unexpected error occured, please try again later');
+        }
+      }
+
       authForm.current?.reset();
+
       return;
     }
 
