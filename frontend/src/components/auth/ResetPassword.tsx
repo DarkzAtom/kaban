@@ -256,7 +256,7 @@ const LoginForm: React.FC = () => {
             ? "Create a New Account"
             : formType === "forgot-password"
               ? "Recover Your Account Password"
-              : "Log In to Your Account"}
+              : "SECOND RESET PASSWORD COMPONENT"}
         </h2>
         {!customAuthMessages.length ? (
           <>
