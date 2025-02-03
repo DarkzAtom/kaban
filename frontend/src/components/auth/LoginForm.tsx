@@ -119,13 +119,13 @@ const LoginForm: React.FC = () => {
 
       // Check if password format is valid
       const isPasswordValid =
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$#%^&*()-+]).{8,}$/.test(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/.test(
           formData.get("password")?.toString() || "",
         );
       console.log("isPasswordValid", isPasswordValid);
       if (!isPasswordValid) {
         alert(
-          "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one digit, and one special character.",
+          "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one digit.",
         );
         return;
       }
@@ -146,9 +146,11 @@ const LoginForm: React.FC = () => {
           username: username,
           email: email,
           password: password
-        })
+        });
 
         alert(`sukces!!!   ${response.data.email}`)
+
+
       } catch (error: any) {
       if (error.response) {
         switch (error.response.status) {
