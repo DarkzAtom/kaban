@@ -332,8 +332,8 @@ const LoginForm: React.FC = () => {
                     name="password"
                     placeholder="Enter your password"
                     className="mt-1 w-full border-2 border-gray-300 border-opacity-40 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$#%^&*()-+]).{8,}$"
-                    title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character from @$#%^&*-+()"
+                    pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
+                    title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one digit"
                     min={8}
                     required={true}
                   />

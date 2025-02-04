@@ -107,7 +107,7 @@ async def password_recovery(user_email: schemas.UserPasswordRecovery, db: Sessio
     )
 
     # Create the reset link
-    reset_link = f"http://claj.pro/reset-password?token={token}"
+    reset_link = f"http://localhost:3000/reset-password?token={token}"
 
     # Prepare email message
     message = MessageSchema(
@@ -139,9 +139,11 @@ async def password_recovery(user_email: schemas.UserPasswordRecovery, db: Sessio
     return {"message": "Password reset instructions sent to your email"}
 
 @app.post('/auth/postprocess-pswd-recovery')
-async def reset_password(token: str, new_password: str, db: Session = Depends(database.get_db)):
+async def reset_password(data: schemas.UserPasswordRecoveryPostProcessing, db: Session = Depends(database.get_db)):
     try:
 
+        token = data.token
+        new_password = data.new_password
         # verifying token mafaka
 
         payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])

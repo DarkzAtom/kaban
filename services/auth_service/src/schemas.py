@@ -10,6 +10,11 @@ class UserPasswordRecovery(BaseModel):
     email: EmailStr
 
 
+class UserPasswordRecoveryPostProcessing(BaseModel):
+    token: str
+    new_password: str
+
+
 class UserCreate(BaseModel):
     username: str
     email: EmailStr

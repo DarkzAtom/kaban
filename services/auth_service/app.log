@@ -25,3 +25,8 @@
 2025-01-29 12:10:15,656 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
 2025-02-03 13:02:14,441 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
 2025-02-03 13:04:39,005 - INFO - Successfully registered user: paparoach@gmail.com
+2025-02-04 01:31:20,204 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-02-04 01:45:59,074 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-02-04 01:55:47,928 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-02-04 01:56:38,250 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-02-04 02:01:41,033 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
