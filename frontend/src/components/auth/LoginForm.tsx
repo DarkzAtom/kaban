@@ -3,6 +3,7 @@ import axios from "axios";
 import { authApi } from "../../api";
 
 
+
 type FormType = "login" | "signup" | "forgot-password";
 type customAuthMessageType = {
   type: "success" | "error" | "info";
@@ -40,29 +41,29 @@ const LoginForm: React.FC = () => {
         return;
       }
 
-      setCustomAuthMessages(() => [
-        {
-          type: "info",
-          content: "Password reset link has been sent to your email! If we found it in our database, khm... :)",
-        },
-      ]); // **Replace with actual forget-password logic**
+       // **Replace with actual forget-password logic**
 
       const email = formData.get('email')?.toString().trim()
 
       try {
-        const response = authApi.post('auth/password-recovery', {
+        const response = await authApi.post('auth/password-recovery', {
           email: email
-        })
+        });
+        console.log('the response from password recovery with code: ', response)
+
+        setCustomAuthMessages(() => [
+        {
+          type: "info",
+          content: "Password reset link has been sent to your email! If we found it in our database, khm... :)",
+        },
+      ]);
+
       } catch (error: any) {
         if (error.response) {
           switch (error.response.status) {
             case 400:
-              console.log('Email is already taken!', error);
-              alert('Account already exists with a such email! Please try another one, or recover your account via "Forgot password"');
-              break;
-            case 401:
-              console.log('Wrong password or email', error);
-              alert('Wrong password or email');
+              console.log('no such user with this email', error);
+              alert("The user with such an email doesn't exist. Try to register a new one with this address");
               break;
             case 404:
               console.log('Endpoint not found');
