@@ -107,7 +107,7 @@ async def password_recovery(user_email: schemas.UserPasswordRecovery, db: Sessio
     )
 
     # Create the reset link
-    reset_link = f"http://localhost:3000/reset-password?token={token}"
+    reset_link = f"http://claj.pro/reset-password?token={token}"
 
     # Prepare email message
     message = MessageSchema(
