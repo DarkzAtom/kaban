@@ -1,1 +1,4 @@
 __pycache__/
+services/assigned_ports.txt
+docker-compose.dev.yml
+frontend/src/components/homepage/homepage_blueprint.png

@@ -32,3 +32,12 @@
 2025-02-04 02:01:41,033 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
 2025-02-05 19:36:17,077 - INFO - Password reset email sent to rekrut.fedosenko@gmail.com
 2025-02-05 19:38:16,698 - INFO - Password reset email sent to rekrut.fedosenko@gmail.com
+2025-02-06 20:09:11,795 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-02-06 20:28:56,037 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-02-06 20:29:45,885 - ERROR - User not found, recovery mail won't be sent
+2025-02-06 20:30:07,088 - INFO - Successfully registered user: rekrut.fedosenko@gmail.com
+2025-02-06 20:30:11,244 - ERROR - Email already registered: rekrut.fedosenko@gmail.com
+2025-02-06 20:30:23,157 - INFO - Password reset email sent to rekrut.fedosenko@gmail.com
+2025-02-11 04:14:02,891 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes
+2025-02-11 04:14:14,251 - INFO - Password reset email sent to kelvindoubleoh@gmail.com
+2025-02-11 04:24:47,418 - DEBUG - detected 'argon2_cffi' backend, version '23.1.0', with support for 0x13 argon2 hashes

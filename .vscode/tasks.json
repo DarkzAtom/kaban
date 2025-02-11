@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "frontend",
+			"problemMatcher": [],
+			"label": "npm: start - frontend",
+			"detail": "react-scripts start",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"label": "DBs (DEV) Docker Compose start",
+			"type": "shell",
+			"command": "docker compose -f docker-compose.dev.yml up",
+			"options": {
+				"cwd": "${workspaceFolder}",
+				"shell": {
+					"executable": "wsl.exe",
+					"args": ["-e", "bash", "-ic"]
+				}
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"label": "auth_service uvicorn start",
+			"type": "shell",
+			"command": "source .venv/bin/activate && python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8001",
+			"options": {
+				"cwd": "${workspaceFolder}/services/auth_service",
+				"shell": {
+					"executable": "wsl.exe",
+					"args": ["-e", "bash", "-ic"]
+				}
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		}
+	]
+}
