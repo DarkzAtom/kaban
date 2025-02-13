@@ -118,7 +118,7 @@ const LoginForm: React.FC = () => {
       }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#3c6ff5] to-[#4c0bf4] px-4 py-2 md:px-0 md:py-0">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-[#b8413e] to-[#650d0d] px-4 py-2 md:px-0 md:py-0">
       <div className="rounded-xl bg-white px-10 py-8 shadow-lg md:w-96 md:rounded-[3rem] md:px-14 md:py-12 lg:w-[33.25rem]">
         <h2 className="mb-6 text-center text-xl font-bold">
           Please provide your new password to set up

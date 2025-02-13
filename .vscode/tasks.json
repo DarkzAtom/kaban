@@ -55,6 +55,26 @@
 			"runOptions": {
 				"runOn": "folderOpen"
 			}
+		},
+		{
+			"label": "news_service uvicorn start",
+			"type": "shell",
+			"command": "source .venv/bin/activate && python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8005",
+			"options": {
+				"cwd": "${workspaceFolder}/services/news_service",
+				"shell": {
+					"executable": "wsl.exe",
+					"args": ["-e", "bash", "-ic"]
+				}
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
 		}
 	]
 }
