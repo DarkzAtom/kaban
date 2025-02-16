@@ -45,9 +45,9 @@ def get_unprocessed_urls(db: Session, limit: int = 10) -> List[models.BbcUrl]:
         .limit(limit)\
         .all()
 
-def mark_url_as_processed(db: Session, url_id: int) -> models.BbcUrl:
+def mark_url_as_processed(db: Session, url_href: str) -> models.BbcUrl:
     """Mark URL as processed after article has been created"""
-    db_url = db.query(models.BbcUrl).filter(models.BbcUrl.id == url_id).first()
+    db_url = db.query(models.BbcUrl).filter(models.BbcUrl.url == url_href).first()
     if db_url:
         db_url.processed = True
         db.commit()
@@ -61,3 +61,6 @@ def filter_new_urls(db: Session, urls: List[str]) -> List[str]:
         db.query(models.BbcUrl.url).all()
     )
     return [url for url in urls if url not in existing_urls]
+
+def get_all_news(db: Session) -> List[models.Article]:
+    return db.query(models.Article).all()

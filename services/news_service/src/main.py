@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from . import models, database, crud, schemas
 import logging
-
+from fastapi.staticfiles import StaticFiles
 
 # logger
 logging.basicConfig(
@@ -19,6 +19,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+
+app.mount("/images", StaticFiles(directory="images/430_colored_images_test"), name="images")
 
 # Add CORS middleware
 app.add_middleware(
@@ -43,3 +45,8 @@ def get_db():
 @app.get("/news/health")
 async def health_check():
     return {"status": "ok"}
+
+
+@app.get("/news/all")
+async def get_all_news(db: Session = Depends(get_db)):
+    return crud.get_all_news(db)

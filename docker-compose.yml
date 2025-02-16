@@ -28,11 +28,33 @@ services:
       timeout: 5s
       retries: 5
 
-#  news_service:
-#    build:
-#      context: ./services/news_service
-#    ports:
-#      -
+  news_service:
+    build:
+      context: ./services/news_service
+    ports:
+      - "8005:8000"
+    environment:
+      - DATABASE_URL=postgresql://news_user:admin@news_db/news_db
+    depends_on:
+      news_db:
+        condition: service_healthy
+    restart: always
+
+  news_db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=news_user
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=news_db
+    ports:
+      - "5437:5432"
+    volumes:
+      - news_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U news_user -d news_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   frontend:
     build:
@@ -40,10 +62,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=http://157.245.68.235:8001  # Point to auth_service for now, since i dont have much written lol
+      - REACT_APP_API_URL=http://157.245.68.235:8001
+      - REACT_APP_NEWS_SERVICE_URL=http://157.245.68.235:8005
     depends_on:
       - auth_service
+      - news_service
     restart: always
 
 volumes:
   auth_postgres_data:
+  news_postgres_data:
