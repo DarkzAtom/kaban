@@ -21,6 +21,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST << 'EOF'
             cd /var/www/kabanforum/kaban
+            git remote set-url origin git@github.com:DarkzAtom/kaban.git
             git reset --hard
             git pull
             # Force recreation of containers
