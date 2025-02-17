@@ -15,7 +15,7 @@ def test_image_search():
     pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
     index = pc.Index("images4articles-kaban")  # or whatever your index name is
 
-    # Test query text
+    # Test query text ls
     test_text = "headphones"  # you can change this to any description
 
     # Process the text query
