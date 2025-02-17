@@ -85,7 +85,7 @@ function HomePage() {
         // Sort articles by date in descending order
         const sortedArticles = [...response.data].sort((a, b) => 
           new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
+        ).reverse();
 
         // Set the most recent article as featured
         const latestArticle = sortedArticles[0];

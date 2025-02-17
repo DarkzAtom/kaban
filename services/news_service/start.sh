@@ -1,3 +1,6 @@
 #!/bin/bash
 service cron start
-python -m uvicorn src.main:app --host 0.0.0.0 --port 8000 
+
+sleep 1
+
+exec uvicorn src.main:app --host 0.0.0.0 --port 8000
