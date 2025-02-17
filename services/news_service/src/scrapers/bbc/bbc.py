@@ -80,7 +80,7 @@ def collect_all_articles_links() -> list[str]:
     with open('bbc_news_links_to_scrape.html', 'w') as f:
         f.write(pretty_html)
 
-    # collect all article links
+    # collect all article links lsll
     hrefs = []
     links = soup.select('a[data-testid="internal-link"]')
     for link in links:
