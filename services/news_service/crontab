@@ -1,2 +1,6 @@
-*/5 * * * * python -m src.scrapers.bbc.bbc >> /var/log/cron.log 2>&1
+SHELL=/bin/bash
+PYTHONPATH=/app
+DATABASE_URL=postgresql://news_user:admin@news_db/news_db
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/5 * * * * cd /app && DATABASE_URL=postgresql://news_user:admin@news_db/news_db /usr/local/bin/python3 -m src.scrapers.bbc.bbc >> /var/log/cron.log 2>&1
 # end of crontab
